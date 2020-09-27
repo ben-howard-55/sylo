@@ -4,11 +4,8 @@ import axios from "axios";
 
 import { Text, View } from "../components/Themed";
 import { useEffect, useState } from "react";
-import Graph from "./Graph";
-import BaseCard from "./BaseCard";
 import TokenValue from "./TokenValue";
 import LargeGraph from "./Largegraph";
-import TokenInformation from "./TokenInformation";
 
 type CardProps = {
   id: string;
