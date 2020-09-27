@@ -23,7 +23,6 @@ export default function TrackerToken({ route, navigation }: props) {
             style={{
               width: 48,
               height: 65,
-              display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -33,9 +32,11 @@ export default function TrackerToken({ route, navigation }: props) {
         </Pressable>
         <View
           style={{
-            paddingLeft: 100,
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
+            flex: 0.8,
           }}
         >
           <Image
@@ -59,10 +60,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    fontFamily: "RawlineMedium",
   },
   titleText: {
     color: "#495162",
-    // fontFamily: "RawlineMedium",
     fontSize: 18,
     lineHeight: 21,
     textAlign: "center",

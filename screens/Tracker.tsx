@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    fontFamily: "RawlineMedium",
   },
   // title css
   title: {
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#fff",
     paddingTop: 43,
+    fontFamily: "RawlineMediumTitle",
   },
   aux: {
     flex: 1,
@@ -57,7 +59,6 @@ const styles = StyleSheet.create({
   },
   titleText: {
     width: "100%",
-    // fontFamily: "RawlineMedium",
     fontSize: 18,
     lineHeight: 21,
     paddingTop: 22,

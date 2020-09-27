@@ -45,7 +45,6 @@ export default function GetTracker({ navigation, scale }: props) {
   return (
     <View style={styles.cardHolder}>
       {cards.map((token) => {
-        console.log(token.symbol);
         return (
           <TrackerCard
             key={token.id}

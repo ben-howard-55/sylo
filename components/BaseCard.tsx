@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet } from "react-native";
-import { Text, View } from "../components/Themed";
+import { Text, View, BoldText } from "../components/Themed";
 import numeral from "numeral";
 
 type baseCardProps = {
@@ -32,14 +32,14 @@ export default function BaseCard({
           height={36}
           source={{ uri: icon_address }}
         />
-        <Text style={styles.name}>{name}</Text>
+        <BoldText style={styles.name}>{name}</BoldText>
       </View>
       <View style={styles.rightBase}>
-        <Text style={styles.fiat}>${cRate}</Text>
+        <BoldText style={styles.fiat}>${cRate}</BoldText>
 
-        <Text style={cryptoType}>
+        <BoldText style={cryptoType}>
           {(crypto / rate).toFixed(2)}% (${crypto.toFixed(4)})
-        </Text>
+        </BoldText>
       </View>
     </View>
   );
