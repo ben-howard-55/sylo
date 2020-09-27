@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Image, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
+import numeral from "numeral";
 
 type tokenValueProps = {
   rate: number;
@@ -8,7 +9,8 @@ type tokenValueProps = {
 };
 
 export default function TokenValue({ rate, crypto }: tokenValueProps) {
-  // if negative growth show red
+  let cRate = numeral(rate).format("0,0.0000");
+
   let cryptoType = styles.cryptoGreen;
   if (crypto < 0) {
     cryptoType = styles.cryptoRed;
@@ -16,7 +18,7 @@ export default function TokenValue({ rate, crypto }: tokenValueProps) {
 
   return (
     <View style={styles.base}>
-      <Text style={styles.fiat}>${rate.toFixed(4)}</Text>
+      <Text style={styles.fiat}>${cRate}</Text>
       <Text style={cryptoType}>
         {(crypto / rate).toFixed(2)}% (${crypto.toFixed(4)})
       </Text>

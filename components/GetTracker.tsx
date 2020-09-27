@@ -3,15 +3,22 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import TrackerCard from "../components/TrackerCard";
 import axios from "axios";
+import timeENUM from "../constants/scale";
 
 type JSON = {
   id: string;
   text: string;
   name: string;
   icon_address: string;
+  symbol: string;
 };
 
-export default function GetTracker() {
+type props = {
+  navigation: any;
+  scale: timeENUM;
+};
+
+export default function GetTracker({ navigation, scale }: props) {
   const [cards, setCards] = useState<JSON[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
 
@@ -38,13 +45,16 @@ export default function GetTracker() {
   return (
     <View style={styles.cardHolder}>
       {cards.map((token) => {
-        console.log(token.id);
+        console.log(token.symbol);
         return (
           <TrackerCard
             key={token.id}
             name={token.name}
+            symbol={token.symbol}
             icon={token.icon_address}
             id={token.id}
+            navigation={navigation}
+            scale={scale}
           />
         );
       })}
@@ -55,7 +65,6 @@ export default function GetTracker() {
 const styles = StyleSheet.create({
   cardHolder: {
     display: "flex",
-    paddingTop: 36,
     flex: 527,
   },
 });

@@ -5,8 +5,12 @@ import { Text, View } from "../components/Themed";
 import GetTracker from "../components/GetTracker";
 import { ScrollView } from "react-native-gesture-handler";
 import TimeControl from "../components/TimeControl";
+import { useState } from "react";
+import timeENUM from "../constants/scale";
 
-export default function Tracker() {
+export default function Tracker(props: any) {
+  const [scale, setScale] = useState<timeENUM>(timeENUM.MONTH);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -25,8 +29,8 @@ export default function Tracker() {
             />
           </View>
         </View>
-        <TimeControl />
-        <GetTracker />
+        <TimeControl scale={scale} setScale={setScale} />
+        <GetTracker navigation={props.navigation} scale={scale} />
       </View>
     </ScrollView>
   );
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     backgroundColor: "#fff",
+    paddingTop: 43,
   },
   aux: {
     flex: 1,

@@ -1,23 +1,34 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import numeral from "numeral";
 
 import { Text, View } from "../components/Themed";
 
-export default function TokenInformation() {
+type props = {
+  cap: number;
+  fiat: string;
+  volume: number;
+  symbol: string;
+};
+
+export default function TokenInformation({ cap, fiat, volume, symbol }: props) {
+  let mCap = numeral(cap).format("0,0.00");
+  let vol = numeral(volume).format("0,0.00");
+
   return (
     <View style={styles.main}>
       <Text style={styles.title}>Information</Text>
       <View style={styles.row}>
         <Text style={styles.info}>Symbol:</Text>
-        <Text style={styles.value}>$123</Text>
+        <Text style={styles.value}>{symbol}</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.info}>Market Cap:</Text>
-        <Text style={styles.value}>$123</Text>
+        <Text style={styles.value}>${mCap + " " + fiat}</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.info}>24h Volume:</Text>
-        <Text style={styles.value}>$123</Text>
+        <Text style={styles.value}>${vol + " " + fiat}</Text>
       </View>
     </View>
   );

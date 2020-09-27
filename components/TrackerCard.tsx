@@ -1,16 +1,20 @@
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import axios from "axios";
 
 import { Text, View } from "../components/Themed";
 import { useEffect, useState } from "react";
 import Graph from "./Graph";
 import BaseCard from "./BaseCard";
+import timeENUM from "../constants/scale";
 
 type CardProps = {
   id: string;
   name: string;
   icon: string;
+  navigation: any;
+  symbol: string;
+  scale: timeENUM;
 };
 
 type JSONa = {
@@ -26,9 +30,16 @@ type history = {
   seq_no: number;
 };
 
-export default function TrackerCard({ name, icon, id }: CardProps) {
+export default function TrackerCard({
+  name,
+  icon,
+  id,
+  symbol,
+  navigation,
+  scale,
+}: CardProps) {
   let fiat = "USD";
-  let period = "week";
+  let period = scale.toString();
   let type = "historic";
 
   const [graphData, setGraphData] = useState<number[]>([]);
@@ -37,16 +48,6 @@ export default function TrackerCard({ name, icon, id }: CardProps) {
   const [openingFiat, setOpeningFiat] = useState<number>(0);
 
   useEffect(() => {
-    console.log(
-      "https://assets-api.sylo.io/v2/asset/id/" +
-        id +
-        "/rate?fiat=" +
-        fiat +
-        "&period=" +
-        period +
-        "&type=" +
-        type
-    );
     axios
       .get(
         "https://assets-api.sylo.io/v2/asset/id/" +
@@ -71,7 +72,7 @@ export default function TrackerCard({ name, icon, id }: CardProps) {
         console.log("error calling " + name + " from API");
         console.log(error);
       });
-  }, []);
+  }, [scale]);
 
   if (isLoading) {
     return (
@@ -81,20 +82,32 @@ export default function TrackerCard({ name, icon, id }: CardProps) {
     );
   }
 
+  console.log("trackercard" + symbol);
   return (
-    <View style={styles.bg}>
-      <View style={styles.base}>
-        <BaseCard
-          name={name}
-          icon_address={icon}
-          rate={closingFiat}
-          crypto={closingFiat - openingFiat}
-        />
+    <Pressable
+      onPress={() =>
+        navigation.navigate("TrackerToken", {
+          id: id,
+          icon: icon,
+          name: name,
+          symbol: symbol,
+        })
+      }
+    >
+      <View style={styles.bg}>
+        <View style={styles.base}>
+          <BaseCard
+            name={name}
+            icon_address={icon}
+            rate={closingFiat}
+            crypto={closingFiat - openingFiat}
+          />
+        </View>
+        <View style={styles.chart}>
+          <Graph data={graphData} />
+        </View>
       </View>
-      <View style={styles.chart}>
-        <Graph data={graphData} />
-      </View>
-    </View>
+    </Pressable>
   );
 }
 

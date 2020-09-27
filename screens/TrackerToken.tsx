@@ -1,27 +1,56 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image, Pressable } from "react-native";
 import TokenCard from "../components/TokenCard";
 
 import { Text, View } from "../components/Themed";
 import TimeControl from "../components/TimeControl";
-import TokenInformation from "../components/TokenInformation";
+import timeENUM from "../constants/scale";
+import { useState } from "react";
 
-export default function TabTwoScreen() {
+type props = {
+  navigation: any;
+  route: any;
+};
+
+export default function TrackerToken({ route, navigation }: props) {
+  const [scale, setScale] = useState<timeENUM>(timeENUM.WEEK);
+  const { id, icon, name, symbol } = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.title}>
-        {/* <Image/> */}
-        <Text style={styles.titleText}>Sylo</Text>
+        <Pressable onPress={() => navigation.navigate("Tracker")}>
+          <View
+            style={{
+              width: 48,
+              height: 65,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image source={require("../assets/images/BackVector.png")} />
+          </View>
+        </Pressable>
+        <View
+          style={{
+            paddingLeft: 100,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            style={{
+              height: 30,
+              width: 30,
+              marginRight: 12,
+            }}
+            source={{ uri: icon }}
+          />
+          <Text style={styles.titleText}>{name}</Text>
+        </View>
       </View>
-      <TimeControl />
-      <TokenCard
-        id={"0xf293d23bf2cdc05411ca0eddd588eb1977e8dcd4:mainnet:ethereum"}
-        name={"Sylo"}
-        icon={"hmm"}
-      />
-      <View style={styles.tokenInfo}>
-        <TokenInformation />
-      </View>
+      <TimeControl scale={scale} setScale={setScale} />
+      <TokenCard id={id} symbol={symbol} scale={scale} />
     </View>
   );
 }
@@ -36,17 +65,12 @@ const styles = StyleSheet.create({
     // fontFamily: "RawlineMedium",
     fontSize: 18,
     lineHeight: 21,
+    textAlign: "center",
   },
   title: {
     display: "flex",
-    paddingTop: 59,
-    paddingBottom: 19,
+    paddingTop: 43,
+    width: "100%",
     flexDirection: "row",
-    alignItems: "flex-end",
-  },
-  tokenInfo: {
-    paddingTop: 30,
-    display: "flex",
-    alignItems: "center",
   },
 });

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
+import numeral from "numeral";
 
 type baseCardProps = {
   rate: number;
@@ -20,6 +21,7 @@ export default function BaseCard({
   if (crypto < 0) {
     cryptoType = styles.cryptoRed;
   }
+  let cRate = numeral(rate).format("0,0.0000");
 
   return (
     <View style={styles.base}>
@@ -33,7 +35,7 @@ export default function BaseCard({
         <Text style={styles.name}>{name}</Text>
       </View>
       <View style={styles.rightBase}>
-        <Text style={styles.fiat}>${rate.toFixed(4)}</Text>
+        <Text style={styles.fiat}>${cRate}</Text>
 
         <Text style={cryptoType}>
           {(crypto / rate).toFixed(2)}% (${crypto.toFixed(4)})
