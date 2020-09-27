@@ -29,39 +29,30 @@ export type TextProps = ThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function Text(props: TextProps) {
-  let [fontsLoaded] = useFonts({
-    rawline: require("../assets/fonts/rawlineMediumFont.ttf"),
-  });
+  // let [fontsLoaded] = useFonts({
+  //   rawline: require("../assets/fonts/rawlineMediumFont.ttf"),
+  // });
+
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+
+  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+}
+
+export function BoldText(props: TextProps) {
+  // let [fontsLoaded] = useFonts({
+  //   rawlineBold: require("../assets/fonts/rawline-600.ttf"),
+  // });
 
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
   return (
     <DefaultText
-      style={[{ color }, style, { fontFamily: "rawline" }]}
+      style={[{ color }, style, { fontWeight: "bold" }]}
       {...otherProps}
     />
   );
-}
-
-export function BoldText(props: TextProps) {
-  let [fontsLoaded] = useFonts({
-    rawlineBold: require("../assets/fonts/rawline-600.ttf"),
-  });
-
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <DefaultText
-        style={[{ color }, style, { fontFamily: "rawlineBold" }]}
-        {...otherProps}
-      />
-    );
-  }
 }
 
 export function View(props: ViewProps) {
