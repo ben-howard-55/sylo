@@ -67,7 +67,7 @@ export function View(props: ViewProps) {
     />
   );
 }
-
+// border themes
 const styles = StyleSheet.create({
   borderLight: {
     borderColor: "#F6F6F6",
