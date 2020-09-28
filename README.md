@@ -1,5 +1,5 @@
 # sylo
-
+## A crytocurrency app created for Sylo.
 
 
 Press on a Crypto Currency Token Card in order to be sent  a more indepth view of the currency's information. 
@@ -8,3 +8,5 @@ There is a time scale under the app title on all screens, press on the text to c
 the current scale will have its corrosponding text orange
 
 The search feature has not yet been implemented...
+
+all information sourced from "assets-api.sylo.v2".
