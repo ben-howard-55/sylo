@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pressable, StyleSheet, Image, TextInput } from "react-native";
+import { StyleSheet, Image, TextInput } from "react-native";
 import { View } from "../components/Themed";
 
 interface props {
@@ -14,19 +14,24 @@ export default function Search({ search, setSearch }: props) {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        marginRight: 16,
+        justifyContent: "flex-end",
       }}
     >
       <TextInput
         placeholder="search"
         onChangeText={(text: string) => setSearch(text.toLowerCase())}
-        style={{ width: "40%", paddingRight: 10, height: 24 }}
+        style={{
+          height: 24,
+          width: 96,
+          marginLeft: 8,
+          marginRight: 8,
+          borderBottomWidth: 2,
+          borderBottomColor: "#8A96AA",
+          color: "#8A96AA",
+        }}
       />
       <Image
         style={{
-          marginRight: 15,
-          marginTop: 22,
-          marginBottom: 19,
           width: 24,
           height: 24,
         }}

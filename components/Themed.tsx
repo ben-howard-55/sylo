@@ -1,7 +1,9 @@
-import { AppLoading } from "expo";
-import { useFonts } from "expo-font";
 import * as React from "react";
-import { Text as DefaultText, View as DefaultView } from "react-native";
+import {
+  Text as DefaultText,
+  View as DefaultView,
+  StyleSheet,
+} from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -12,6 +14,7 @@ export function useThemeColor(
 ) {
   const theme = useColorScheme();
   const colorFromProps = props[theme];
+  const bordrLight = "borderColor: #F6F6F6";
 
   if (colorFromProps) {
     return colorFromProps;
@@ -29,10 +32,6 @@ export type TextProps = ThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function Text(props: TextProps) {
-  // let [fontsLoaded] = useFonts({
-  //   rawline: require("../assets/fonts/rawlineMediumFont.ttf"),
-  // });
-
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
@@ -40,10 +39,6 @@ export function Text(props: TextProps) {
 }
 
 export function BoldText(props: TextProps) {
-  // let [fontsLoaded] = useFonts({
-  //   rawlineBold: require("../assets/fonts/rawline-600.ttf"),
-  // });
-
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
@@ -61,6 +56,23 @@ export function View(props: ViewProps) {
     { light: lightColor, dark: darkColor },
     "background"
   );
-
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return (
+    <DefaultView
+      style={[
+        { backgroundColor },
+        style,
+        backgroundColor === "#fff" ? styles.borderLight : styles.borderDark,
+      ]}
+      {...otherProps}
+    />
+  );
 }
+
+const styles = StyleSheet.create({
+  borderLight: {
+    borderColor: "#F6F6F6",
+  },
+  borderDark: {
+    borderColor: "#161616",
+  },
+});

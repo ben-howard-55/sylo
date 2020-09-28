@@ -70,16 +70,6 @@ export default function TrackerCard({
       })
       .catch((error) => {
         console.log("error calling " + name + " from API");
-        console.log(
-          "https://assets-api.sylo.io/v2/asset/id/" +
-            id +
-            "/rate?fiat=" +
-            fiat +
-            "&period=" +
-            period +
-            "&type=" +
-            type
-        );
       });
   }, [scale]);
 
@@ -124,13 +114,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 140,
     borderWidth: 2,
-    borderColor: "#F6F6F6",
     borderStyle: "solid",
     borderRadius: 15,
     marginTop: 16,
   },
   chart: {
-    // flex: 84,
     backgroundColor: "transparent",
     paddingBottom: 12,
   },

@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 21,
     textAlign: "center",
-    color: "#495162",
     paddingBottom: 12,
   },
   info: {

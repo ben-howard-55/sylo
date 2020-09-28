@@ -9,7 +9,8 @@ import Svg, {
   Mask,
   Line,
 } from "react-native-svg";
-import { StyleSheet, View } from "react-native";
+import { View } from "./Themed";
+import { StyleSheet } from "react-native";
 
 type graphProps = {
   data: number[];

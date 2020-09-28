@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet } from "react-native";
-import { Text, View, BoldText } from "../components/Themed";
+import { View, BoldText } from "../components/Themed";
 import numeral from "numeral";
 
 type baseCardProps = {
@@ -74,14 +74,12 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     fontSize: 12,
     lineHeight: 18,
-    color: "#495162",
   },
   name: {
     textAlign: "center",
     paddingLeft: 12,
     fontSize: 15,
     lineHeight: 18,
-    color: "#495162",
   },
   icon: {
     width: 36,
@@ -98,8 +96,6 @@ const styles = StyleSheet.create({
   rightBase: {
     flex: 1,
     height: "100%",
-    // alignItems: "center",
-    // justifyContent: "flex-end",
     backgroundColor: "transparent",
   },
 });

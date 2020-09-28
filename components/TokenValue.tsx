@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 21,
     textAlign: "center",
-    color: "#495162",
     paddingTop: 12,
   },
 });
