@@ -114,6 +114,9 @@ export default function TokenCard({ id, symbol, scale }: CardProps) {
 const styles = StyleSheet.create({
   bg: {
     display: "flex",
+    width: "100%",
+    paddingLeft: 20,
+    paddingRight: 20,
     height: 199,
     marginTop: 24,
     backgroundColor: "transparent",

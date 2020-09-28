@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 36,
-    height: 26,
+    height: 36,
     marginLeft: 14,
   },
   leftBase: {
@@ -94,11 +94,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "transparent",
     alignItems: "center",
-    // justifyContent: "center",
   },
   rightBase: {
     flex: 1,
-    alignItems: "center",
+    height: "100%",
+    // alignItems: "center",
+    // justifyContent: "flex-end",
     backgroundColor: "transparent",
   },
 });
