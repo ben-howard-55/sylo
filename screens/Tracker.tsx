@@ -7,32 +7,32 @@ import { ScrollView } from "react-native-gesture-handler";
 import TimeControl from "../components/TimeControl";
 import { useState } from "react";
 import timeENUM from "../constants/scale";
+import Search from "../components/Search";
 
 export default function Tracker(props: any) {
   const [scale, setScale] = useState<timeENUM>(timeENUM.MONTH);
+  const [search, setSearch] = useState<string>("all");
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView style={{ width: "100%" }}>
         <View style={styles.title}>
-          <Text style={styles.titleText}>Tracker</Text>
-          <View style={styles.aux}>
-            <Image
-              style={{
-                marginRight: 15,
-                marginTop: 22,
-                marginBottom: 19,
-                width: 24,
-                height: 24,
-              }}
-              source={require("../assets/images/Vector.png")}
-            />
+          <View style={{ flex: 1 }}></View>
+          <View style={styles.titleTextBox}>
+            <Text style={styles.titleText}>Tracker</Text>
+          </View>
+          <View style={styles.search}>
+            <Search search={search} setSearch={setSearch} />
           </View>
         </View>
         <TimeControl scale={scale} setScale={setScale} />
-        <GetTracker navigation={props.navigation} scale={scale} />
-      </View>
-    </ScrollView>
+        <GetTracker
+          navigation={props.navigation}
+          scale={scale}
+          search={search}
+        />
+      </ScrollView>
+    </View>
   );
 }
 
@@ -41,43 +41,29 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "RawlineMedium",
-  },
-  // title css
-  title: {
-    flex: 1,
-    marginRight: 16,
-    marginLeft: 16,
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    paddingTop: 43,
-    fontFamily: "RawlineMediumTitle",
-  },
-  aux: {
-    flex: 1,
-    alignItems: "flex-end",
     height: "100%",
-    backgroundColor: "blue",
+  },
+  title: {
+    width: "100%",
+    paddingLeft: 16,
+    paddingRight: 16,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: 43,
+    height: 65,
   },
   titleText: {
-    width: "100%",
     fontSize: 18,
     lineHeight: 21,
-    paddingTop: 22,
-    paddingBottom: 19,
     textAlign: "center",
-    color: "#495162",
+  },
+  titleTextBox: {
+    flex: 1,
+    justifyContent: "center",
   },
   search: {
     alignItems: "flex-end",
-    color: "#495162",
-    width: 24,
-    height: 24,
-    paddingRight: 15,
-  },
-  // time controls
-  timeControls: {
-    backgroundColor: "black",
-    flex: 21,
+    justifyContent: "center",
+    flex: 1,
   },
 });

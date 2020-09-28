@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    fontFamily: "RawlineMedium",
   },
   titleText: {
     color: "#495162",
