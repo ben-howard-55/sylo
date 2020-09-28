@@ -15,15 +15,6 @@ type graphProps = {
   data: number[];
 };
 
-const Gradient = () => (
-  <Defs>
-    <LinearGradient id="Gradient" x1={"0%"} y1={"100%"} x2={"0%"} y2={"0%"}>
-      <Stop offset={"0%"} stopColor={"#F15A29"} />
-      <Stop offset={"100%"} stopColor={"white"} />
-    </LinearGradient>
-  </Defs>
-);
-
 export default function LargeGraph({ data }: graphProps) {
   // stylistic
   let graphData = [];
@@ -31,34 +22,15 @@ export default function LargeGraph({ data }: graphProps) {
     graphData.push(data[i * 5]);
   }
 
-  const Gradient = () => (
-    <Defs key={"defs"}>
-      <LinearGradient
-        id={"gradient"}
-        x1={"100%"}
-        y1={"100%"}
-        x2={"100%"}
-        y2={"100%"}
-      >
-        <Stop offset={"0%"} stopColor={"rgba(241, 90, 41)"} stopOpacity={1} />
-        <Stop
-          offset={"10%"}
-          stopColor={"rgba(241, 90, 41)"}
-          stopOpacity={0.8}
-        />
-        <Stop
-          offset={"50%"}
-          stopColor={"rgba(241, 90, 41)"}
-          stopOpacity={0.4}
-        />
-      </LinearGradient>
-    </Defs>
-  );
-
   return (
     <View>
       <LineChart
-        style={{ height: 117, width: "100%", position: "absolute" }}
+        style={{
+          height: 110,
+          width: "100%",
+          position: "absolute",
+          paddingBottom: 5,
+        }}
         data={graphData}
         contentInset={{ top: 5, bottom: 5 }}
         curve={shape.curveBasis}
@@ -69,7 +41,7 @@ export default function LargeGraph({ data }: graphProps) {
         }}
       />
       <AreaChart
-        style={{ height: 117, width: "100%" }}
+        style={{ height: 110, width: "100%", paddingBottom: 5 }}
         data={graphData}
         contentInset={{ top: 5, bottom: 5 }}
         curve={shape.curveBasis}

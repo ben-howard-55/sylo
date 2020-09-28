@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
   // title css
   title: {
     flex: 1,
+    marginRight: 16,
+    marginLeft: 16,
     flexDirection: "row",
     backgroundColor: "#fff",
     paddingTop: 43,

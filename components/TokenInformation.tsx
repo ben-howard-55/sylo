@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   main: {
     display: "flex",
     alignItems: "center",
-    width: 307,
+    width: "100%",
   },
   row: {
     display: "flex",

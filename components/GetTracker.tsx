@@ -64,6 +64,8 @@ export default function GetTracker({ navigation, scale }: props) {
 const styles = StyleSheet.create({
   cardHolder: {
     display: "flex",
-    flex: 527,
+    width: "100%",
+    paddingLeft: 16,
+    paddingRight: 16,
   },
 });

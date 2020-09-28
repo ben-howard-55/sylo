@@ -48,13 +48,13 @@ export default function BaseCard({
 const styles = StyleSheet.create({
   base: {
     width: "100%",
+    height: 54,
     display: "flex",
     flexDirection: "row",
     backgroundColor: "transparent",
     alignSelf: "center",
   },
   cryptoGreen: {
-    display: "flex",
     textAlign: "right",
     paddingRight: 12,
     fontSize: 12,
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     color: "#33BB5D",
   },
   cryptoRed: {
-    display: "flex",
     textAlign: "right",
     paddingRight: 15,
     fontSize: 12,
@@ -70,19 +69,16 @@ const styles = StyleSheet.create({
     color: "red",
   },
   fiat: {
-    display: "flex",
+    textAlign: "right",
     paddingTop: 10,
     paddingRight: 15,
     fontSize: 12,
     lineHeight: 18,
-    textAlign: "right",
     color: "#495162",
   },
   name: {
-    display: "flex",
-    alignSelf: "flex-start",
+    textAlign: "center",
     paddingLeft: 12,
-    paddingTop: 18,
     fontSize: 15,
     lineHeight: 18,
     color: "#495162",
@@ -91,18 +87,18 @@ const styles = StyleSheet.create({
     width: 36,
     height: 26,
     marginLeft: 14,
-    marginTop: 11,
-    marginBottom: 9,
   },
   leftBase: {
     flex: 1,
     height: "100%",
     flexDirection: "row",
     backgroundColor: "transparent",
-    alignContent: "center",
+    alignItems: "center",
+    // justifyContent: "center",
   },
   rightBase: {
     flex: 1,
+    alignItems: "center",
     backgroundColor: "transparent",
   },
 });

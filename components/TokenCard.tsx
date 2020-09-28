@@ -91,11 +91,13 @@ export default function TokenCard({ id, symbol, scale }: CardProps) {
 
   return (
     <View style={styles.bg}>
-      <View style={styles.base}>
-        <TokenValue rate={closingFiat} crypto={closingFiat - openingFiat} />
-      </View>
-      <View style={styles.chart}>
-        <LargeGraph data={graphData} />
+      <View style={styles.card}>
+        <View style={styles.base}>
+          <TokenValue rate={closingFiat} crypto={closingFiat - openingFiat} />
+        </View>
+        <View style={styles.chart}>
+          <LargeGraph data={graphData} />
+        </View>
       </View>
       <View style={styles.tokenInfo}>
         <TokenInformation
@@ -112,13 +114,9 @@ export default function TokenCard({ id, symbol, scale }: CardProps) {
 const styles = StyleSheet.create({
   bg: {
     display: "flex",
-    width: 335,
     height: 199,
-    borderWidth: 2,
-    borderColor: "#F6F6F6",
-    borderStyle: "solid",
-    borderRadius: 15,
     marginTop: 24,
+    backgroundColor: "transparent",
   },
   tokenInfo: {
     paddingTop: 30,
@@ -130,8 +128,15 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   base: {
-    width: "100%",
     display: "flex",
     backgroundColor: "transparent",
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  card: {
+    borderColor: "#F6F6F6",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderRadius: 15,
   },
 });

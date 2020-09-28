@@ -14,7 +14,9 @@ export default function TimeControl({ scale, setScale }: props) {
       style={{
         display: "flex",
         flexDirection: "row",
-        width: 336,
+        width: "100%",
+        paddingLeft: 20,
+        paddingRight: 20,
         justifyContent: "space-between",
       }}
     >

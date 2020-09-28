@@ -112,10 +112,8 @@ export default function TrackerCard({
 const styles = StyleSheet.create({
   bg: {
     display: "flex",
-    width: 343,
+    width: "100%",
     height: 140,
-    left: 0,
-    top: 0,
     borderWidth: 2,
     borderColor: "#F6F6F6",
     borderStyle: "solid",
@@ -132,5 +130,7 @@ const styles = StyleSheet.create({
     display: "flex",
     backgroundColor: "transparent",
     alignSelf: "center",
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
