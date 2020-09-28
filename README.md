@@ -1,6 +1,6 @@
 # sylo
 ## A crytocurrency app created for Sylo.
-
+link to expo: https://expo.io/@ben-howard-55/Sylo
 
 Press on a Crypto Currency Token Card in order to be sent  a more indepth view of the currency's information. 
 Press the left chevron key to return to all tokens.
