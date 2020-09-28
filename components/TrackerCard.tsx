@@ -81,8 +81,6 @@ export default function TrackerCard({
       </View>
     );
   }
-
-  console.log("trackercard" + symbol);
   return (
     <Pressable
       onPress={() =>
