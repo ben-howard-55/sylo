@@ -16,23 +16,31 @@ type JSON = {
 type props = {
   navigation: any;
   scale: timeENUM;
+  search: string;
 };
 
-export default function GetTracker({ navigation, scale }: props) {
+export default function GetTracker({ navigation, scale, search }: props) {
   const [cards, setCards] = useState<JSON[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    let url =
+      "https://assets-api.sylo.io/v2/all?take=50&blockchain=ethereum&search=" +
+      search +
+      "&has_history_only=true";
+    if (search === "" || search === "all") {
+      url = "https://assets-api.sylo.io/v2/all";
+    }
     axios
-      .get("https://assets-api.sylo.io/v2/all")
+      .get(url)
       .then((response) => {
         setCards(response.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log("error reading all from API");
+        console.log("error reading " + search + " all from API");
       });
-  }, []);
+  }, [search]);
 
   if (isLoading) {
     return (

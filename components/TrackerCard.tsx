@@ -70,14 +70,23 @@ export default function TrackerCard({
       })
       .catch((error) => {
         console.log("error calling " + name + " from API");
-        console.log(error);
+        console.log(
+          "https://assets-api.sylo.io/v2/asset/id/" +
+            id +
+            "/rate?fiat=" +
+            fiat +
+            "&period=" +
+            period +
+            "&type=" +
+            type
+        );
       });
   }, [scale]);
 
   if (isLoading) {
     return (
       <View style={styles.bg}>
-        <Text style={{ textAlign: "center" }}>...Loading</Text>
+        <Text style={{ textAlign: "center" }}></Text>
       </View>
     );
   }

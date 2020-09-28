@@ -69,7 +69,6 @@ export default function TokenCard({ id, symbol, scale }: CardProps) {
       })
       .catch((error) => {
         console.log("error calling selected coin from API");
-        console.log(error);
       });
   }, [scale]);
 
